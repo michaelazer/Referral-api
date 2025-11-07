@@ -12,14 +12,17 @@ module.exports = function(router) {
         }
     });
 
-    /*router.get('/campaigns', auth(), function (req, res, next) {
-        Campaign.findAll(true, true, (campaigns) => {
-            if (campaigns && campaigns.length > 0) {
-                let camps = (campaigns.map(entity => entity.data));
-                return res.status(200).json(camps);
-            }
-        });
-    });*/
+    router.get('/campaigns', auth(), async function (req, res, next) {
+        try {
+            // Direct database query to bypass hanging findAll method
+            let db = require('../config/db');
+            let result = await db('campaigns').select('*').orderBy('created_at', 'desc');
+            return res.status(200).json(result || []);
+        } catch (error) {
+            console.error('Error fetching campaigns:', error);
+            return res.status(500).json({ error: 'Failed to fetch campaigns' });
+        }
+    });
 
     router.get("/campaign/:id(\\d+)", auth(), validate(Campaign), function (req, res, next) {
         let campaign = res.locals.valid_object;
@@ -62,7 +65,7 @@ module.exports = function(router) {
         req.body.name = req.body.name.toLowerCase();
         let campaign = (await Campaign.find({'name': req.body.name}))[0];
 
-        if (campaign.data) {
+        if (campaign && campaign.data) {
             return res.status(400).json({ error: "Campaign name already in use" });
         }
 

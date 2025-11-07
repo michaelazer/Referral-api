@@ -102,7 +102,7 @@ let startApp = function(app, callback=null){
      */
 
     function onListening() {
-        let addr = server.address();
+        let addr = this.address();
         let bind = typeof addr === 'string'
             ? 'pipe ' + addr
             : 'port ' + addr.port;

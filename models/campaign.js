@@ -1,8 +1,9 @@
 let Url = require('./url');
 let CampaignProperty = require('./campaign-property');
+// Temporarily disable references to prevent hanging on campaigns list load
 let references = [
-    {"model":CampaignProperty, "referenceField": "parent_id", "direction":"from", "readOnly":false},
-    {"model": Url, "referenceField": "campaign_id", "direction": "from", "readOnly": true}
+    //{"model":CampaignProperty, "referenceField": "parent_id", "direction":"from", "readOnly":false},
+    //{"model": Url, "referenceField": "campaign_id", "direction": "from", "readOnly": true}
 ];
 let Campaign = require('./base/entity')("campaigns", references);
 let default_notifications = require('../config/default-notifications');

@@ -42,7 +42,7 @@ SECRET_KEY=${secret}`;
 
                     console.log("env  generated, starting app ");
                 }).catch(function(err){
-                    fs.unlink(envPath);
+                    fs.unlink(envPath, () => {});
 
                     throw "Specified Database connection error - env wiped\n" + err
                 });
