@@ -26,9 +26,9 @@ let startApp = function(app, callback=null){
      */
     let config = {}
     if(process.env.CERTIFICATES){
-        var key = fs.readFileSync(process.env.CERTIFICATES + "weferral.key");
-        var cert = fs.readFileSync(process.env.CERTIFICATES + "weferral.crt");
-        var ca = fs.readFileSync(process.env.CERTIFICATES + "weferral_bundle.crt");
+        var key = fs.readFileSync(process.env.CERTIFICATES + "alpherral.key");
+        var cert = fs.readFileSync(process.env.CERTIFICATES + "alpherral.crt");
+        var ca = fs.readFileSync(process.env.CERTIFICATES + "alpherral_bundle.crt");
         config = {key:key, cert:cert, ca:ca};
     }
     let server = http.createServer(app);

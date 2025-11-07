@@ -1,7 +1,7 @@
 {
-    "name": "weferral-api",
+    "name": "alpherral-api",
     "version": "0.2.1",
-    "description": "Weferral API",
+    "description": "Alpherral API",
     "private": true,
     "engines": {
         "node": ">=11.8.0"

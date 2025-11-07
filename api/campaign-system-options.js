@@ -44,7 +44,7 @@ module.exports = function(router) {
             //File.findOne('name', req.params.id, function (image) {
                 if(image === undefined){
                     //todo: make less hardcoded.. maybe seperate api calls again
-                    return res.send({'logo': path.join(__dirname, "../public/assets/weferral.svg")});
+                    return res.send({'logo': path.join(__dirname, "../public/assets/alpherral.svg")});
                 } else {
                     let fileUrl = image.data.url;
                     res.send({'logo': fileUrl});
